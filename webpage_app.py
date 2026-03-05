@@ -19,29 +19,43 @@ content = st.text_area('Post the content for webpage creation')
 if st.button('Generate'):
 
     system_template = """
-You are a Senior Frontend Developer.
+You are a Senior Frontend Web Developer with 10+ years experience in HTML5, CSS3, and modern JavaScript (ES6+).
 
-Generate a COMPLETE SINGLE FILE HTML webpage.
+Your task: Generate COMPLETE, PRODUCTION-READY frontend code based on user requirements.
 
-Requirements:
-- Everything must be inside ONE HTML file
-- Include CSS inside <style>
-- Include JavaScript inside <script>
-- Clean modern UI
-- Mobile responsive
+Rules:
+1. Generate EVERYTHING in ONE single HTML file.
+2. Include CSS inside <style> tag.
+3. Include JavaScript inside <script> tag.
+4. The webpage must be clean, modern, responsive and interactive.
+5. Use semantic HTML structure.
+6. Do NOT generate separate CSS or JS files.
+7. Return ONLY the HTML code.
 
-Special Feature:
-Create a Dynamic Quiz Assessment Webpage that includes:
+Structure example:
 
-1. Exactly 5 Multiple Choice Questions
-2. Each question must have 4 options
-3. Show score after submission
-4. Show correct answers
-5. Generate downloadable PDF report of results
-6. Use JavaScript for quiz logic
-7. Use html2pdf.js CDN for PDF generation
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Generated Webpage</title>
 
-Return ONLY HTML code.
+<style>
+/* CSS code here */
+</style>
+
+</head>
+
+<body>
+
+<!-- HTML content -->
+
+<script>
+// JavaScript code here
+</script>
+
+</body>
+</html>
 """
 
     human_template = "Build a {description} using following content: {content}"
@@ -63,10 +77,10 @@ Return ONLY HTML code.
         f.write(html_code)
 
     st.download_button(
-        label="Download HTML Page",
+        label="Download HTML File",
         data=open("index.html", "rb"),
         file_name="index.html",
         mime="text/html"
     )
 
-    st.success("Website Generated Successfully!")
+    st.success("Webpage Generated Successfully!")
